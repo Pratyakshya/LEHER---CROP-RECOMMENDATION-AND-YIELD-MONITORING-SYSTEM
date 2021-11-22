@@ -1,0 +1,108 @@
+.topbar {
+  width: 100%;
+  height: 50px;
+  background-color: #1a6e5f;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.topbarWrapper {
+  height: 100%;
+  padding: 0px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo {
+  width: 160px;
+  height: 40px;
+  padding-top: 5px;
+  padding-left: 20px;
+  cursor: pointer;
+  /* mask-image: linear-gradient(rgb(253, 253, 253, 1), transparent); */
+}
+.topRight {
+  display: flex;
+  align-items: center;
+}
+.topbarIconContainer {
+  position: relative;
+  cursor: pointer;
+  margin-right: 20px;
+  color: #c3b7b7;
+}
+.topbarIconBadge {
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: -5px;
+  right: 0px;
+  background-color: rgb(182, 28, 28);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+}
+
+.topbarAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+/* .header {
+  width: 100%;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #e8e4e1;
+  padding: 0 10%;
+}
+
+.logo {
+  font-size: 2rem;
+  color: #020d3d;
+  font-weight: bold;
+}
+
+.header ul {
+  list-style: none;
+  margin-right: 0rem;
+  padding: 0;
+  display: flex;
+  align-items: baseline;
+}
+
+.header li {
+  margin-right: 3rem;
+}
+img {
+  padding: 5px;
+  width: 150px;
+}
+
+.header a {
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-family: "Georgia";
+  font-weight: bold;
+  color: #000000;
+}
+
+.header a:hover,
+.header a:active,
+.header a.active {
+  color: #c2b9c9;
+}
+
+.badge {
+  background-image: linear-gradient(#ff8a00, #e52e71);
+  background-color: #c2b9c9;
+  color: #c2b9c9;
+  border-radius: 12px;
+  padding: 0 1rem;
+  margin-left: 0.5rem;
+} */ ;

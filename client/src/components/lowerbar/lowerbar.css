@@ -1,0 +1,93 @@
+.lowerbar {
+  /* width: 100%;
+  height: 50px; */
+  background-color: #000300;
+  position: sticky;
+  bottom: 0;
+  z-index: 999;
+}
+
+.lowerbarWrapper {
+  height: 100%;
+  padding: 0px 20px;
+  display: flex;
+  position: fixed;
+  top: 180px;
+  left: 283px;
+  bottom: 0;
+  align-items: center;
+  justify-content: space-between;
+}
+/* .topRight {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  background-color: #000300;
+  position: sticky;
+  bottom: 0;
+  z-index: 999;
+} */
+
+.topbarIconContainer {
+  position: relative;
+  cursor: pointer;
+  margin-right: 20px;
+}
+.topbarIconBadge {
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: -5px;
+  right: 0px;
+  /* background-color: #556052; */
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+}
+.farmer {
+  height: 150px;
+  width: 150px;
+  position: absolute;
+  left: 975px;
+  top: -20px;
+}
+.farm {
+  height: 100px;
+  width: 100vh;
+  position: absolute;
+  opacity: 0.93;
+  left: 200px;
+  top: 117px;
+  bottom: 0;
+}
+.land1 {
+  height: 200px;
+  width: 50vh;
+  position: absolute;
+  opacity: 0.98;
+  left: 820px;
+  top: 16px;
+  bottom: 0;
+}
+.land2 {
+  height: 200px;
+  width: 70vh;
+  position: absolute;
+  opacity: 0.95;
+  left: -61px;
+  top: 16px;
+  bottom: 0;
+}
+.land3 {
+  height: 100px;
+  width: 80vh;
+  position: absolute;
+  opacity: 0.95;
+  left: -40px;
+  top: 116px;
+  bottom: 0;
+}

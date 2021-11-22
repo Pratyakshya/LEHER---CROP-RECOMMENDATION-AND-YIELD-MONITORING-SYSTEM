@@ -1,0 +1,180 @@
+.userhello {
+  flex: 4;
+  padding: 20px;
+}
+
+.userTitlec {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.userAdditionButton {
+  width: 100px;
+  border: none;
+  padding: 10px;
+  background-color: teal;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+  font-size: 20px;
+}
+
+.userContainerfeedback {
+  display: flex;
+  margin-top: 20px;
+}
+
+.userShowfeedback {
+  flex: 1;
+  padding: 20px;
+  padding-top: 0;
+  -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+}
+
+.userUpdatefeedback {
+  flex: 2;
+  padding: 20px;
+  padding-top: 10px;
+  -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+  margin-left: 20px;
+}
+
+.userShowTopfeedback {
+  display: flex;
+  align-items: center;
+}
+
+.userShowImgfeedback {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.userShowTopTitlefeedback {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+}
+
+.userShowUsernamefeedback {
+  font-weight: 600;
+}
+
+.userShowUserTitlefeedback {
+  font-weight: 300;
+}
+
+.userShowBottomfeedback {
+  margin-top: 0px;
+}
+
+.userShowTitlefeedback {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgb(175, 170, 170);
+}
+
+.userShowInfofeedback {
+  display: flex;
+  align-items: center;
+  margin: 20px 0px;
+  color: #444;
+}
+
+.userShowIconfeedback {
+  font-size: 16px !important;
+}
+
+.userShowInfoTitlefeedback {
+  margin-left: 10px;
+}
+
+.userUpdateTitlefeedback {
+  font-size: 24px;
+  font-weight: 600;
+  top: 10px;
+}
+.userUpdateTitlefeedbackReplies {
+  font-size: 24px;
+  font-weight: 600;
+  position: relative;
+  top: 10px;
+}
+
+.userUpdateFormfeedback {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.userUpdateItemfeedback {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.userUpdateItemfeedback > label {
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.userUpdateInputfeedback {
+  border: none;
+  padding-top: 0;
+  padding-left: 0;
+  line-height: 1em;
+  width: 300px;
+  height: 100px;
+  text-align: justify;
+}
+
+.userUpdateInputfeedbackReplies {
+  border: none;
+  width: 300px;
+  height: 50px;
+}
+
+.userUpdateRightfeedback {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 125px;
+  padding-right: 5px;
+}
+
+.userUpdateUploadfeedback {
+  display: flex;
+  align-items: center;
+}
+
+.userUpdateImgfeedback {
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+.userUpdateIconfeedback {
+  cursor: pointer;
+}
+
+.userUpdateButtonfeedback {
+  border-radius: 5px;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+  background-color: darkblue;
+  color: white;
+  font-weight: 600;
+}
+
+.feebackMessageTextArea {
+  resize: none;
+  width: 70vh;
+  height: 40vh;
+}
