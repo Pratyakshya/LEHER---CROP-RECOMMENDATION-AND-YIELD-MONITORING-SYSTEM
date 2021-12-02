@@ -1,0 +1,28 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+    <title>Update Crop</title>  
+</head>  
+<body>  
+    <h2>Crop Information</h2>   
+    <form action = "/updatedetails" method="post">  
+    <table>  
+        <tr><td>Crop ID</td><td><input type="number" name="cropid"></td></tr> 
+        <tr><td>Nitrogen Concentration</td><td><input type="number" step="0.01" name="nitrogen"></td></tr>  
+        <tr><td>Phosphorus Concentration</td><td><input type="number" step="0.01" name="phosphorus"></td></tr>  
+        <tr><td>Potassium Concentration</td><td><input type="number" step="0.01" name="potassium"></td></tr>
+        <tr><td>pH value of Soil</td><td><input type="number" step="0.01" name="pH"></td></tr> 
+        <tr><td>Humidity</td><td><input type="number" step="0.01" name="humidity"></td></tr>   
+        <tr><td>Temperature</td><td><input type="number" step="0.01" name="temperature"></td></tr>
+        <tr><td>Rainfall Required</td><td><input type="number" step="0.01" name="rainfall"></td></tr> 
+        <tr><td>Delay in Rainfall</td><td><input type="number" name="delayinrainfall"></td></tr>
+        <tr><td>Change in pH values</td><td><input type="number" step="0.01" name="changeinpH"></td></tr>  
+        <tr><td>Land Size</td><td><input type="number" step="0.01" name="landsize"></td></tr>
+        <tr><td>Budget</td><td><input type="number" name="budget"></td></tr>
+        <tr><td>Recommended Crop</td><td><input type="text" name="cropname"></td></tr>
+        <tr><td>Maximum Yield</td><td><input type="number" step="0.01" name="yield"></td></tr>     
+        <tr><td><input type="submit" value="Submit"></td></tr>  
+    </table>  
+    </form>  
+</body>  
+</html>  

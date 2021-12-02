@@ -1,0 +1,55 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+    <title>List</title>  
+</head>  
+<body>  
+  
+<h3>Crop Information</h3>  
+<table border=5>  
+    <thead>  
+        <td>Crop ID</td>  
+        <td>Username</td>  
+        <td>Nitrogen Concentration</td>  
+        <td>Phosphorus Concentration</td>
+        <td>Potassium Concentration</td>    
+        <td>pH value of Soil</td>  
+        <td>Humidity</td> 
+        <td>Temperature</td> 
+        <td>Rainfall Required</td>  
+        <td>Delay in Rainfall</td>  
+        <td>Change in pH values</td>
+        <td>Land Size</td> 
+        <td>Budget</td> 
+        <td>Recommended Crop</td>  
+        <td>Maximum Yield</td>    
+    </thead>  
+      
+    {% for row in rows %}  
+      
+        <tr>  
+            <td>{{row["cropid"]}}</td> 
+            <td>{{row["username"]}}</td>  
+            <td>{{row["nitrogen"]}}</td>  
+            <td>{{row["phosphorus"]}}</td>  
+            <td>{{row["potassium"]}}</td> 
+            <td>{{row["pH"]}}</td>
+            <td>{{row["humidity"]}}</td>
+            <td>{{row["temperature"]}}</td>   
+            <td>{{row["rainfall"]}}</td> 
+            <td>{{row["delayinrainfall"]}}</td>
+            <td>{{row["changeinpH"]}}</td>
+            <td>{{row["landsize"]}}</td>
+            <td>{{row["budget"]}}</td> 
+            <td>{{row["cropname"]}}</td>
+            <td>{{row["yield"]}}</td>      
+        </tr>  
+      
+    {% endfor %}  
+</table>  
+<br><br>  
+  
+<a href="/">Go back to home page</a>  
+  
+</body>  
+</html>
