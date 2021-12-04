@@ -1,75 +1,155 @@
 import React from "react";
 
-/*const CropProfile = () => {
-  return <div>In crop Profile nnnnn</div>;
-};
-
-export default CropProfile; */
-
-//import React from "react";
-
-import "./cropprofile.css";
+//import "./cropprofile.css";
 
 import { DataGrid } from "@material-ui/data-grid";
 import { DeleteOutline } from "@material-ui/icons";
-import { userRows } from "../dummyData";
+//import { userRows } from "../dummyData";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
+import faker from 'faker';
+import Avatar from 'react-avatar';
+import TablePagination from '@mui/material/TablePagination';
+import Grid from '@mui/material/Grid';
+//import { Container, Row, Col } from 'react-grid-system';
 
-export default function CropProfile() {
-  const [data, setData] = useState(userRows);
+//import * as React from 'react';
+import TableFooter from '@mui/material/TableFooter';
+import Typography from '@material-ui/core/Typography'
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
 
-  const handleDelete = (id) => {
-    setData(data.filter((item) => item.id !== id));
-  };
-  
-  const columns = [
-    { field: "id", headerName: "ID", width: 90 },
-    {
-      field: "user",
-      headerName: "Crop Name",
-      width: 200,
-      renderCell: (params) => {
-        return (
-          <div className="CropProfileUser">
-            <img className="CropProfile.Img" src={params.row.avatar} alt="" />
-            {params.row.username}
-          </div>
-        );
-      },
-    },
-    { field: "email", headerName: "Yield", width: 200 },
-    
-    
-    {
-      field: "action",
-      headerName: "Action",
-      width: 150,
-      renderCell: (params) => {
-        return (
-          <>
-            <Link to={"/user/" + params.row.id}>
-              <button className="CropProfileEdit">Edit</button>
-            </Link>
-            <DeleteOutline
-              className="CropProfileDelete"
-              onClick={() => handleDelete(params.row.id)}
-            />
-          </>
-        );
-      },
-    },
-  ];
+const useStyles = makeStyles((theme) => ({
+  table: {
+    minWidth: 650,
+  },
+  tableContainer: {
+      borderRadius: 15,
+      margin: '10px 10px',
+      maxWidth: 950
+  },
+  tableHeaderCell: {
+      fontWeight: 'bold',
+      backgroundColor: theme.palette.primary.dark,
+      color: theme.palette.getContrastText(theme.palette.primary.dark)
+  },
+  avatar: {
+      backgroundColor: theme.palette.primary.light,
+      color: theme.palette.getContrastText(theme.palette.primary.light)
+  },
+  name: {
+      fontWeight: 'bold',
+      color: theme.palette.secondary.dark
+  },
+  status: {
+      fontWeight: 'bold',
+      fontSize: '0.75rem',
+      color: 'white',
+      backgroundColor: 'grey',
+      borderRadius: 8,
+      padding: '3px 10px',
+      display: 'inline-block'
+  }
+}));
 
-  return (
-    <div className="CropProfile">
-      <DataGrid
-        rows={data}
-        disableSelectionOnClick
-        columns={columns}
-        pageSize={8}
-        checkboxSelection
-      />
-    </div>
-  );
+let USERS = [], STATUSES = ['Active', 'Pending', 'Blocked'];
+for(let i=0;i<14;i++) {
+  USERS[i] = {
+      name: faker.name.findName(),
+      email: faker.internet.email(),
+      phone: faker.phone.phoneNumber(),
+      jobTitle: faker.name.jobTitle(),
+      company: faker.company.companyName(),
+      joinDate: faker.date.past().toLocaleDateString('en-US'),
+      status: STATUSES[Math.floor(Math.random() * STATUSES.length)]
+  }
 }
+
+function CropProfile() {
+const classes = useStyles();
+const [page, setPage] = React.useState(0);
+const [rowsPerPage, setRowsPerPage] = React.useState(5);
+
+const handleChangePage = (event, newPage) => {
+  setPage(newPage);
+};
+
+const handleChangeRowsPerPage = (event) => {
+  setRowsPerPage(+event.target.value);
+  setPage(0);
+};
+
+return (
+  <TableContainer component={Paper} className={classes.tableContainer}>
+    <Table className={classes.table} aria-label="simple table">
+      <TableHead>
+        <TableRow>
+          <TableCell className={classes.tableHeaderCell}>Serial No</TableCell>
+          <TableCell className={classes.tableHeaderCell}>Crop Name</TableCell>
+          <TableCell className={classes.tableHeaderCell}>Yield</TableCell>
+          <TableCell className={classes.tableHeaderCell}>Status</TableCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        {USERS.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => (
+          <TableRow key={row.name}>
+            <TableCell>
+                <Grid container>
+                    <Grid item lg={2}>
+                        <Avatar alt={row.name} src='.' className={classes.avatar}/>
+                    </Grid>
+                    <Grid item lg={10}>
+                        <Typography className={classes.name}>{row.name}</Typography>
+                        <Typography color="textSecondary" variant="body2">{row.email}</Typography>
+                        <Typography color="textSecondary" variant="body2">{row.phone}</Typography>
+                    </Grid>
+                </Grid>
+              </TableCell>
+            <TableCell>
+                <Typography color="primary" variant="subtitle2">{row.jobTitle}</Typography>
+                <Typography color="textSecondary" variant="body2">{row.company}</Typography>
+              </TableCell>
+            <TableCell>{row.joinDate}</TableCell>
+            <TableCell>
+                <Typography 
+                  className={classes.status}
+                  style={{
+                      backgroundColor: 
+                      ((row.status === 'Active' && 'green') ||
+                      (row.status === 'Pending' && 'blue') ||
+                      (row.status === 'Blocked' && 'orange'))
+                  }}
+                >{row.status}</Typography>
+              </TableCell>
+          </TableRow>
+        ))}
+      </TableBody>
+      <TableFooter>
+      <TablePagination
+          rowsPerPageOptions={[5, 10, 15]}
+          component="div"
+          count={USERS.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onChangePage={handleChangePage}
+          onChangeRowsPerPage={handleChangeRowsPerPage}
+      />
+      </TableFooter>
+    </Table>
+  </TableContainer>
+);
+}
+
+
+
+export default CropProfile;
+
+ 
+
