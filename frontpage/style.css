@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap");
 body,
 html {
   margin: 0;
@@ -20,6 +21,11 @@ svg {
   width: 100px;
   top: 0;
   z-index: 0;
+}
+.heading-title {
+  font-family: "Indie Flower", cursive;
+  font-size: 400%;
+  right: 45vw;
 }
 
 .btn {

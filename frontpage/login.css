@@ -1,13 +1,21 @@
 * {
   box-sizing: border-box;
   font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+body {
+  /* height: 100vh;
+  width: 100vw; */
+  background-color: #99e2d0;
 }
 .login {
+  position: relative;
+  top: 15vh;
   width: 320px;
   height: 450px;
   border: 1px solid #ccc;
-  background: url(https://media4.giphy.com/media/BHNfhgU63qrks/giphy.gif) center
-    center no-repeat;
+  background: url(giphy.gif) center center no-repeat;
   background-size: cover;
   margin: 30px auto;
   border-radius: 20px;
@@ -32,7 +40,7 @@
   background: rgba(255, 255, 255, 0.5);
   border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 0 15px;
-  color: #fff;
+  color: rgb(3, 3, 3);
   border-radius: 5px;
   font-size: 14px;
 }
@@ -41,7 +49,7 @@
   outline: none;
 }
 ::-webkit-input-placeholder {
-  color: #ddd;
+  color: rgb(3, 3, 3);
 }
 .login .form input.submit {
   background: rgba(255, 255, 255, 0.9);
