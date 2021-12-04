@@ -8,6 +8,7 @@ import Feedback from "./pages/Feedback";
 import CropProfile from "./pages/CropProfile";
 import Sidebar from "./components/sidebar/Sidebar";
 import Lowerbar from "./components/lowerbar/Lowerbar";
+// import Start from "./pages/Start";
 
 function useWindowSize() {
   const [size, setSize] = useState([0, 0]);
@@ -27,6 +28,8 @@ function App() {
   console.log(width);
   return (
     <BrowserRouter>
+      {/* <Routes>
+        <Route path="/" element={<Start />} /> */}
       <MainNavigation />
       <div
         className="container"
@@ -44,6 +47,7 @@ function App() {
           <Lowerbar />
         </div>
       </div>
+      {/* </Routes> */}
     </BrowserRouter>
   );
 }
