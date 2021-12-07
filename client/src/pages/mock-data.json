@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "fullName": "1",
+    "address": "Wheat",
+    "phoneNumber": "513,0000",
+    "email": "jenny.chan@email.com"
+  },
+  {
+    "id": 2,
+    "fullName": "2",
+    "address": "Jowar",
+    "phoneNumber": "780,000",
+    "email": "jessica.warren@email.com"
+  },
+  {
+    "id": 3,
+    "fullName": "3",
+    "address": "Bajra",
+    "phoneNumber": "265,000",
+    "email": "tony.frank@email.com"
+  },
+  {
+    "id": 4,
+    "fullName": "4",
+    "address": "Ragi",
+    "phoneNumber": "1,348,000",
+    "email": "jeremy.clark@email.com"
+  },
+  {
+    "id": 5,
+    "fullName": "5",
+    "address": "Sugar cane",
+    "phoneNumber": "472,000",
+    "email": "raymon.edwards@email.com"
+  }
+]

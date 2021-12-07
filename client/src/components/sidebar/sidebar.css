@@ -2,7 +2,7 @@
   flex: 1;
   height: calc(100vh-50px);
   /* background-image: linear-gradient(#02050e, #21616a); */
-  background-image: linear-gradient(#1a6e5f, #519a48);
+  background-image: linear-gradient(#3a949a, #62bcab);
   position: sticky;
   top: 50px;
 }
@@ -28,11 +28,11 @@
   cursor: pointer;
   display: flex;
   border-radius: 10px;
-  color: #c3b7b7;
+  color: black;
   font-size: 25px;
 }
 .sidebarListItem:hover {
-  background-color: #21616a;
+  background-color: #62bcab;
 }
 .sidebarlistText {
   color: #c3b7b7;

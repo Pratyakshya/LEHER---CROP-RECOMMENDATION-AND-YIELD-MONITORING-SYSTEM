@@ -1,39 +1,107 @@
-.userList {
-    flex: 4;
-    
-  }
-  
-  .userListUser {
-    display: flex;
-    align-items: center;
-    font-size: 24px;
-    font-weight: 600;
-  }
-  
-  .userListImg {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-right: 10px;
-    font-size: 24px;
-    font-weight: 600;
-  }
-  
-  .userListEdit{
-      border: none;
-      border-radius: 10px;
-      padding: 5px 10px;
-      background-color: #3bb077;
-      color: white;
-      cursor: pointer;
-      margin-right: 20px;
-      font-size: 24px;
-      font-weight: 600;
-  }
-  
-  .userListDelete{
-      color: red;
-      cursor: pointer;
-  }
-  
+.app-container {
+  flex: 2;
+  padding: 20px;
+}
+
+table {
+  width: 100%;
+  padding-left: 200px;
+  text-align: center;
+}
+
+th,
+td {
+  border: 1px solid #ffffff;
+  padding: 8px;
+  font-size: 32px;
+}
+
+th {
+  /* background-color: rgb(117, 201, 250); */
+  border: none;
+  border-radius: 10px;
+  padding: 5px 10px;
+  background-color: #62bcab;
+  color: white;
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+td {
+  /* background-color: rgb(205, 235, 253); */
+  border: none;
+  border-radius: 10px;
+  padding: 5px 10px;
+  background-color: #62bcab;
+  color: white;
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+form {
+  display: flex;
+  gap: 5px;
+}
+
+form td:last-child {
+  display: flex;
+  width: 80px;
+  background-color: #99e2d0;
+}
+form th:last-child {
+  display: flex;
+  width: 80px;
+  opacity: 0;
+}
+
+form * {
+  font-size: 15px;
+}
+.userListUser {
+  display: flex;
+  align-items: center;
+}
+
+button {
+  background-color: #99e2d0;
+  border: none;
+}
+tbody tr:last-child {
+  opacity: 1;
+}
+
+.additionRow {
+  opacity: 0;
+}
+.AddEntry {
+  right: 600px;
+  height: 200px;
+  width: 200px;
+}
+.AddEntrybtn {
+  border: none;
+  background-color: #99e2d0;
+  cursor: pointer;
+  font-size: large;
+  color: #3a949a;
+}
+.AddEntrybtn:hover {
+  color: #53c7cf;
+}
+.userAddbtnWrapper {
+  width: 1000px;
+  /* background-color: red; */
+}
+.userAddbtn {
+  width: 80px;
+  height: 40px;
+  border: none;
+  padding: 5px;
+  background-color: teal;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+  font-size: 16px;
+  position: relative;
+  left: 900px;
+}

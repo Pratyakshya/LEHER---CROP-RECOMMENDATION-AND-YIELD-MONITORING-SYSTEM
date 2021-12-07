@@ -36,7 +36,7 @@ export default function Home(props) {
               <CalendarTodayIcon className="userShowIcon" />
               <span className="userShowInfoTitle">19.12.1988</span>
             </div>
-            <span className="userShowTitle">props.</span>
+            {/* <span className="userShowTitle">props.</span> */}
             <div className="userShowInfo">
               <PhoneAndroidIcon className="userShowIcon" />
               <span className="userShowInfoTitle">+91 123 456 7890</span>

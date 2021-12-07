@@ -1,0 +1,9 @@
+.buttonIcon {
+  border: none;
+  background-color: #99e2d0;
+  cursor: pointer;
+  color: #3a949a;
+}
+.buttonIcon:hover {
+  color: #53c7cf;
+}

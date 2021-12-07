@@ -1,155 +1,191 @@
-import React from "react";
+import React, { useState, Fragment } from "react";
+import { nanoid } from "nanoid";
+import "./cropprofile.css";
+import data from "./mock-data.json";
+import ReadOnlyRow from "./ReadOnlyRow";
+import EditableRow from "./EditableRow";
+import PredictCrop from "./PredictCrop";
+import Backdrop from "../components/Backdrop";
 
-//import "./cropprofile.css";
+const CropProfile = () => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
-import { DataGrid } from "@material-ui/data-grid";
-import { DeleteOutline } from "@material-ui/icons";
-//import { userRows } from "../dummyData";
-import { Link } from "react-router-dom";
-import { useState } from "react";
-import Button from '@material-ui/core/Button';
-import { makeStyles } from '@material-ui/core/styles';
-import faker from 'faker';
-import Avatar from 'react-avatar';
-import TablePagination from '@mui/material/TablePagination';
-import Grid from '@mui/material/Grid';
-//import { Container, Row, Col } from 'react-grid-system';
-
-//import * as React from 'react';
-import TableFooter from '@mui/material/TableFooter';
-import Typography from '@material-ui/core/Typography'
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-
-const useStyles = makeStyles((theme) => ({
-  table: {
-    minWidth: 650,
-  },
-  tableContainer: {
-      borderRadius: 15,
-      margin: '10px 10px',
-      maxWidth: 950
-  },
-  tableHeaderCell: {
-      fontWeight: 'bold',
-      backgroundColor: theme.palette.primary.dark,
-      color: theme.palette.getContrastText(theme.palette.primary.dark)
-  },
-  avatar: {
-      backgroundColor: theme.palette.primary.light,
-      color: theme.palette.getContrastText(theme.palette.primary.light)
-  },
-  name: {
-      fontWeight: 'bold',
-      color: theme.palette.secondary.dark
-  },
-  status: {
-      fontWeight: 'bold',
-      fontSize: '0.75rem',
-      color: 'white',
-      backgroundColor: 'grey',
-      borderRadius: 8,
-      padding: '3px 10px',
-      display: 'inline-block'
+  function updateHandler() {
+    setModalIsOpen(true);
   }
-}));
-
-let USERS = [], STATUSES = ['Active', 'Pending', 'Blocked'];
-for(let i=0;i<14;i++) {
-  USERS[i] = {
-      name: faker.name.findName(),
-      email: faker.internet.email(),
-      phone: faker.phone.phoneNumber(),
-      jobTitle: faker.name.jobTitle(),
-      company: faker.company.companyName(),
-      joinDate: faker.date.past().toLocaleDateString('en-US'),
-      status: STATUSES[Math.floor(Math.random() * STATUSES.length)]
+  function closeModalHandler() {
+    setModalIsOpen(false);
   }
-}
+  const [contacts, setContacts] = useState(data);
+  const [addFormData, setAddFormData] = useState({
+    fullName: "",
+    address: "",
+    phoneNumber: "",
+  });
 
-function CropProfile() {
-const classes = useStyles();
-const [page, setPage] = React.useState(0);
-const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [editFormData, setEditFormData] = useState({
+    fullName: "",
+    address: "",
+    phoneNumber: "",
+  });
 
-const handleChangePage = (event, newPage) => {
-  setPage(newPage);
+  const [editContactId, setEditContactId] = useState(null);
+
+  const handleAddFormChange = (event) => {
+    event.preventDefault();
+
+    const fieldName = event.target.getAttribute("name");
+    const fieldValue = event.target.value;
+
+    const newFormData = { ...addFormData };
+    newFormData[fieldName] = fieldValue;
+
+    setAddFormData(newFormData);
+  };
+
+  const handleEditFormChange = (event) => {
+    event.preventDefault();
+
+    const fieldName = event.target.getAttribute("name");
+    const fieldValue = event.target.value;
+
+    const newFormData = { ...editFormData };
+    newFormData[fieldName] = fieldValue;
+
+    setEditFormData(newFormData);
+  };
+
+  const handleAddFormSubmit = (event) => {
+    event.preventDefault();
+
+    const newContact = {
+      id: nanoid(),
+      fullName: addFormData.fullName,
+      address: addFormData.address,
+      phoneNumber: addFormData.phoneNumber,
+    };
+
+    const newContacts = [...contacts, newContact];
+    setContacts(newContacts);
+  };
+
+  const handleEditFormSubmit = (event) => {
+    event.preventDefault();
+
+    const editedContact = {
+      id: editContactId,
+      fullName: editFormData.fullName,
+      address: editFormData.address,
+      phoneNumber: editFormData.phoneNumber,
+    };
+
+    const newContacts = [...contacts];
+
+    const index = contacts.findIndex((contact) => contact.id === editContactId);
+
+    newContacts[index] = editedContact;
+
+    setContacts(newContacts);
+    setEditContactId(null);
+  };
+
+  const handleEditClick = (event, contact) => {
+    event.preventDefault();
+    setEditContactId(contact.id);
+
+    const formValues = {
+      fullName: contact.fullName,
+      address: contact.address,
+      phoneNumber: contact.phoneNumber,
+    };
+
+    setEditFormData(formValues);
+  };
+
+  const handleCancelClick = () => {
+    setEditContactId(null);
+  };
+
+  const handleDeleteClick = (contactId) => {
+    const newContacts = [...contacts];
+
+    const index = contacts.findIndex((contact) => contact.id === contactId);
+
+    newContacts.splice(index, 1);
+
+    setContacts(newContacts);
+  };
+
+  return (
+    <div className="app-container">
+      <form onSubmit={handleEditFormSubmit} className="userListUser">
+        <table>
+          <thead>
+            <tr>
+              <th>Serial No</th>
+              <th>Crop</th>
+              <th>Yield</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {contacts.map((contact) => (
+              <Fragment>
+                {editContactId === contact.id ? (
+                  <EditableRow
+                    editFormData={editFormData}
+                    handleEditFormChange={handleEditFormChange}
+                    handleCancelClick={handleCancelClick}
+                  />
+                ) : (
+                  <ReadOnlyRow
+                    contact={contact}
+                    handleEditClick={handleEditClick}
+                    handleDeleteClick={handleDeleteClick}
+                  />
+                )}
+              </Fragment>
+            ))}
+          </tbody>
+        </table>
+      </form>
+      {/* <div className="additionRow">
+        <h2>Add a New Entry</h2>
+        <form onSubmit={handleAddFormSubmit}>
+          <input
+            type="text"
+            name="fullName"
+            required="required"
+            placeholder="Serial No..."
+            onChange={handleAddFormChange}
+          />
+          <input
+            type="text"
+            name="address"
+            required="required"
+            placeholder="Enter crop name..."
+            onChange={handleAddFormChange}
+          />
+          <input
+            type="text"
+            name="phoneNumber"
+            required="required"
+            placeholder=""
+            onChange={handleAddFormChange}
+          />
+
+          <button type="submit">Add</button>
+        </form>
+      </div> */}
+      <div className="userAddbtnWrapper">
+        <button type="button" onClick={updateHandler} className="userAddbtn">
+          Add
+        </button>
+      </div>
+      {modalIsOpen && <PredictCrop onCancel={closeModalHandler} />}
+      {modalIsOpen && <Backdrop onclick onCancel={closeModalHandler} />}
+    </div>
+  );
 };
-
-const handleChangeRowsPerPage = (event) => {
-  setRowsPerPage(+event.target.value);
-  setPage(0);
-};
-
-return (
-  <TableContainer component={Paper} className={classes.tableContainer}>
-    <Table className={classes.table} aria-label="simple table">
-      <TableHead>
-        <TableRow>
-          <TableCell className={classes.tableHeaderCell}>Serial No</TableCell>
-          <TableCell className={classes.tableHeaderCell}>Crop Name</TableCell>
-          <TableCell className={classes.tableHeaderCell}>Yield</TableCell>
-          <TableCell className={classes.tableHeaderCell}>Status</TableCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        {USERS.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => (
-          <TableRow key={row.name}>
-            <TableCell>
-                <Grid container>
-                    <Grid item lg={2}>
-                        <Avatar alt={row.name} src='.' className={classes.avatar}/>
-                    </Grid>
-                    <Grid item lg={10}>
-                        <Typography className={classes.name}>{row.name}</Typography>
-                        <Typography color="textSecondary" variant="body2">{row.email}</Typography>
-                        <Typography color="textSecondary" variant="body2">{row.phone}</Typography>
-                    </Grid>
-                </Grid>
-              </TableCell>
-            <TableCell>
-                <Typography color="primary" variant="subtitle2">{row.jobTitle}</Typography>
-                <Typography color="textSecondary" variant="body2">{row.company}</Typography>
-              </TableCell>
-            <TableCell>{row.joinDate}</TableCell>
-            <TableCell>
-                <Typography 
-                  className={classes.status}
-                  style={{
-                      backgroundColor: 
-                      ((row.status === 'Active' && 'green') ||
-                      (row.status === 'Pending' && 'blue') ||
-                      (row.status === 'Blocked' && 'orange'))
-                  }}
-                >{row.status}</Typography>
-              </TableCell>
-          </TableRow>
-        ))}
-      </TableBody>
-      <TableFooter>
-      <TablePagination
-          rowsPerPageOptions={[5, 10, 15]}
-          component="div"
-          count={USERS.length}
-          rowsPerPage={rowsPerPage}
-          page={page}
-          onChangePage={handleChangePage}
-          onChangeRowsPerPage={handleChangeRowsPerPage}
-      />
-      </TableFooter>
-    </Table>
-  </TableContainer>
-);
-}
-
-
 
 export default CropProfile;
-
- 
-
